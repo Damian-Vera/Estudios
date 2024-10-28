@@ -1,4 +1,4 @@
-
+-- FORMATO DE FECHAS YYYY-MM-DD
 
 -- TABLAS
 CREATE TABLE categoria(
@@ -111,7 +111,8 @@ INSERT INTO reservacion(id, dni, fecha_reserva, hora_inicio, hora_salida, id_ins
     (7, 78901234, '2024-10-05', '11:00', '12:00', 1),
     (8, 89012345, '2024-05-15', '16:00', '17:00', 3),
     (9, 90123456, '2024-04-10', '13:00', '14:00', 2),
-    (10, 01234567, '2024-03-12', '18:00', '19:00', 3);
+    (10, 01234567, '2024-03-12', '18:00', '19:00', 3),
+	(11, 12345678, '2024-08-05', '10:00', '11:00', 1);
 
 /*
 	a- Listar los datos completos de las instalaciones y 
@@ -142,7 +143,7 @@ COUNT(CASE WHEN EXTRACT(MONTH FROM r.fecha_reserva) = 9 THEN 1 END) AS reservas_
 FROM reservacion r 
 INNER JOIN instalacion i ON r.id_instalacion = i.id
 GROUP BY i.id, i.descripcion, i.precio, i.ubicacion
-HAVING COUNT(CASE WHEN EXTRACT(MONTH FROM r.fecha_reserva) = 8 THEN 1 END) > 
+HAVING COUNT(CASE WHEN EXTRACT(MONTH FROM r.fecha_reserva) = 8 THEN 1 END) < 
 	   COUNT(CASE WHEN EXTRACT(MONTH FROM r.fecha_reserva) = 9 THEN 1 END);
 
 -- EXPLICACION
